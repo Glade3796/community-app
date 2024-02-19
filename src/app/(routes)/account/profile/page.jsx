@@ -1,7 +1,62 @@
-export default function ProfilePage() {
+import { db } from "@/_lib/db";
+import { auth } from "@clerk/nextjs";
+import Link from "next/link";
+
+export default async function ProfilePage() {
+  const clerk_auth_id = auth().userId;
+  const userData = await db.query(
+    `SELECT * FROM users WHERE clerk_auth_id = $1`,
+    [clerk_auth_id]
+  );
+  const user = userData.rows[0];
+  const user_id = user.id;
+  const postsData = await db.query(`SELECT * FROM posts WHERE user_id = $1`, [
+    user_id,
+  ]);
+  const posts = postsData.rows;
+
   return (
-    <div>
-      <h1>Profile</h1>
-    </div>
+    <>
+      <div>
+        <h1>{user.username}&apos;s profile page</h1>
+        <p>Username: {user.username}</p>
+        <p>Full name: {user.full_name}</p>
+        <p>Organisation: {user.organisation_name}</p>
+        <p>Biography: {user.biography}</p>
+        <p>Email: {user.email}</p>
+        <p>Phone: {user.phone_number}</p>
+        <p>
+          Address: {user.address_number} {user.address_street},{" "}
+          {user.address_city}, {user.address_postcode}
+        </p>
+        {user.verified && <p>Verified</p>}
+        {user.site_admin && <p>Site admin</p>}
+        <Link href="/account/edit">Edit profile</Link>
+        {/* TODO - implenet edit profile feature  */}
+      </div>
+
+      <div>
+        <h1>Posts</h1>
+        <ul>
+          {posts.map((post) => (
+            <li key={post.id}>
+              <div>
+                <p>[{post.post_type}]</p>
+                <h3 className="font-bold">{post.title}</h3>
+                <p>{post.content}</p>
+                {post.quantity && <p>Quantity: {post.quantity}</p>}
+                {post.frequency && <p>Frequency: {post.frequency}</p>}
+
+                {/* <p>{post.created_at}</p>
+              <p>{post.updated_at}</p> */}
+                <p>{post.available ? "Available" : "Not available"}</p>
+                <p>{post.closed ? "Closed" : "Open"}</p>
+                <p>{post.created_at.toDateString()}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }
