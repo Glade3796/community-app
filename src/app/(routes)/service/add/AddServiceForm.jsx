@@ -3,16 +3,17 @@ import { useEffect, useState } from "react";
 import { SelectPostType } from "../../../../components/DropDownInputs";
 import PostTitle from "./PostTitle";
 import { AddPostBtn } from "@/components/Buttons";
+import { createServicePost } from "@/_lib/actions";
 
 export default function AddServiceForm() {
   const user_id = 1; //TODO get user_id? from context?
-  const [disableBtn, setDisableBtn] = useState(true);
+  const [disableBtn, setDisableBtn] = useState(false); //set to false for development
   const [form, setForm] = useState({
     user_id: user_id,
     post_type: "asset",
     title: "",
     content: "",
-    quantity: null,
+    quantity: undefined,
     frequency: null,
     date: null,
     available: true,
@@ -20,7 +21,6 @@ export default function AddServiceForm() {
   });
   function handleInput(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
-    console.log(form.content.length);
   }
   //closed checkbox logic
   function handleClosed() {
@@ -30,7 +30,9 @@ export default function AddServiceForm() {
   function handleAvailable() {
     setForm({ ...form, available: !form.available });
   }
-  //disable button if form is invalid
+
+  //disable button if form is invalid:
+
   //! disabled for development
   // useEffect(() => {
   //   if (form.title.length >= 5 && form.content.length >= 30) {
@@ -42,9 +44,12 @@ export default function AddServiceForm() {
   //   if (form.content.length >= 500) {
   //     setDisableBtn(true);
   //   }
-  // }, [form.title.length, form.content.length]); 
+  // }, [form.title.length, form.content.length]);
   return (
-    <form action="" className="flex flex-col justify-center items-center gap-4">
+    <form
+      action={createServicePost}
+      className="flex flex-col justify-center items-center gap-4"
+    >
       <h1>New post</h1>
       <SelectPostType handleInput={handleInput} />
       <input type="hidden" name="user_id" value={user_id} />
@@ -131,7 +136,7 @@ export default function AddServiceForm() {
         <input
           type="checkbox"
           name="closed"
-          value={closed}
+          value={form.closed}
           defaultChecked
           onInput={handleClosed}
         />
