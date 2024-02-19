@@ -22,11 +22,12 @@ site_admin BOOLEAN DEFAULT FALSE)
 CREATE TABLE posts (
     id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users(id),
-    post_type VARCHAR(255) CHECK (type IN ('asset', 'service', 'event', 'job', 'news', 'other')),
+    post_type VARCHAR(255) CHECK (type IN ('asset', 'service', 'request' 'event', 'job', 'news', 'other')),
     title VARCHAR(255) NOT NULL,
     content TEXT,
     quantity INT,
     frequency TEXT,
+    "date", DATE,
     available BOOLEAN DEFAULT TRUE,
     closed BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
