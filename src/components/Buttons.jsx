@@ -1,7 +1,16 @@
+//Button components: "save", "submit" and "upvote" buttons
 "use client";
 
 import { useFormStatus } from "react-dom";
 
+//save button
+export function SaveButton() {
+  const { pending } = useFormStatus();
+
+  return <button disabled={pending}>{pending ? `Saving...` : `Save`}</button>;
+}
+
+//submit button
 export function SubmitBtn() {
   const { pending } = useFormStatus();
 
@@ -13,4 +22,11 @@ export function SubmitBtn() {
       {pending ? `Creating...` : `Create account`}
     </button>
   );
+}
+
+//delete button
+export function UpvoteButton() {
+  const { pending } = useFormStatus();
+
+  return <button disabled={pending}>{pending ? `Voting...` : `Upvote`}</button>;
 }
