@@ -2,7 +2,6 @@
 
 import { createAccountSubmit } from "@/app/_lib/actions";
 import { SubmitBtn } from "@/components/Buttons";
-import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs";
 
 export default async function CreateAccountPage() {
