@@ -31,18 +31,18 @@ export default function AddServiceForm() {
     setForm({ ...form, available: !form.available });
   }
   //disable button if form is invalid
-  useEffect(() => {
-    if (form.title.length >= 5 && form.content.length >= 30) {
-      setDisableBtn(false);
-    }
-    if (form.title.length >= 50) {
-      setDisableBtn(true);
-    }
-    if (form.content.length >= 500) {
-      setDisableBtn(true);
-    }
-    console.log(disableBtn);
-  }, [form.title.length, form.content.length]);
+  //! disabled for development
+  // useEffect(() => {
+  //   if (form.title.length >= 5 && form.content.length >= 30) {
+  //     setDisableBtn(false);
+  //   }
+  //   if (form.title.length >= 50) {
+  //     setDisableBtn(true);
+  //   }
+  //   if (form.content.length >= 500) {
+  //     setDisableBtn(true);
+  //   }
+  // }, [form.title.length, form.content.length]); 
   return (
     <form action="" className="flex flex-col justify-center items-center gap-4">
       <h1>New post</h1>
@@ -136,7 +136,7 @@ export default function AddServiceForm() {
           onInput={handleClosed}
         />
       </div>
-      {!form.closed && (
+      {form.closed && (
         <p>you won&apos;t hear from the community if they can&apos;t reply</p>
       )}
       <AddPostBtn disableBtn={disableBtn} />
