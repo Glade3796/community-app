@@ -47,7 +47,7 @@ export function UpvoteBtn() {
 }
 
 //recover button
-export function RecoverBtn() {
+export function RecoverBtn({reset}) {
   return (
     <button
       onClick={

@@ -18,7 +18,7 @@ export default function Error({ error, reset }) {
         Don&apos;t worry though, go back and try again, if the error persists
         let us know at help@community-app.com
       </p>
-      <RecoverBtn />
+      <RecoverBtn reset={reset}/>
     </div>
   );
 }

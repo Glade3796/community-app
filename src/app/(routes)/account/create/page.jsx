@@ -1,6 +1,6 @@
 //create account form, consider moving to component and forcing user to create an account if no profile exists for them
 
-import { createAccountSubmit } from "@/app/_lib/actions";
+import { createAccountSubmit } from "@/_lib/actions";
 import { SubmitBtn } from "@/components/Buttons";
 import { auth } from "@clerk/nextjs";
 

@@ -2,7 +2,7 @@ import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import Link from "next/link";
-import SiteNav from "./components/SiteNav";
+import SiteNav from "../components/SiteNav";
 import Image from "next/image";
 import logo from "@/../public/images/Logo.png";
 
