@@ -1,7 +1,9 @@
+import AddServiceForm from "@/app/(routes)/service/add/AddServiceForm";
+
 export default function AddServicePage() {
   return (
-    <div>
-      <h1>Add Service</h1>
-    </div>
+    <>
+      <AddServiceForm />
+    </>
   );
 }

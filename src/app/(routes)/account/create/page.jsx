@@ -27,7 +27,7 @@ export default async function CreateAccountPage() {
           name="organisation"
         ></input>
         <label htmlFor="biography">Biography:</label>
-        <input type="text" name="biography" placeholder="biography" />
+        <textarea name="biography" placeholder="biography" />
         {/* contact info */}
         <h3 className="col-span-2 text-lg">Contact info:</h3>
 
@@ -56,6 +56,7 @@ export default async function CreateAccountPage() {
         ></input>
         <label htmlFor="address_city">Town/city:</label>
         <input type="text" placeholder="town/city" name="address_city"></input>
+        {/* TODO verify town exists */}
         <label htmlFor="address_postcode">Postcode:</label>
         <input
           type="text"

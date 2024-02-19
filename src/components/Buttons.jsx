@@ -1,4 +1,4 @@
-//Button components: "save", "submit" and "upvote" buttons
+//Button components: "save", "submit", "add post", "upvote" and "recover" buttons
 "use client";
 
 import { useFormStatus } from "react-dom";
@@ -21,6 +21,20 @@ export function SubmitBtn() {
       className="col-span-2 w-1/3 bg-green-950 hover:bg-green-400 justify-self-center text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
     >
       {pending ? `Creating...` : `Create account`}
+    </button>
+  );
+}
+
+//add post button
+export function AddPostBtn({ disableBtn }) {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      type="submit"
+      disabled={pending || disableBtn}
+      className="col-span-2 w-1/3 bg-green-950 hover:bg-green-400 justify-self-center text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      {pending ? `Posting...` : `Post it!`}
     </button>
   );
 }
