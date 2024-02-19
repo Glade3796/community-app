@@ -136,7 +136,7 @@ export default function AddServiceForm() {
           onInput={handleClosed}
         />
       </div>
-      {!form.closed && (
+      {form.closed && (
         <p>you won&apos;t hear from the community if they can&apos;t reply</p>
       )}
       <AddPostBtn disableBtn={disableBtn} />
