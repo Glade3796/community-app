@@ -4,9 +4,19 @@ import { SelectPostType } from "../../../../components/DropDownInputs";
 import PostTitle from "./PostTitle";
 import { AddPostBtn } from "@/components/Buttons";
 import { createServicePost } from "@/_lib/actions";
+import { auth } from "@clerk/nextjs";
+import { db } from "@/_lib/db";
 
 export default function AddServiceForm() {
-  const user_id = 1; //TODO get user_id? from context?
+  //get user id from clerk
+  const clerk_auth_id = auth().userId;
+  // use that id to get the user id from the database
+  const response = db.query(
+    `SELECT user_id FROM users WHERE clerk_auth_id = $1`,
+    [clerk_auth_id]
+  );
+  //that id will be inserted to the user_id field in the form
+  const { user_id } = response.rows[0];
   const [disableBtn, setDisableBtn] = useState(false); //set to false for development
   const [form, setForm] = useState({
     user_id: user_id,
