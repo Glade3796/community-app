@@ -1,6 +1,6 @@
 //create account form, consider moving to component and forcing user to create an account if no profile exists for them
 
-import { SubmitBtn } from "@/components/Submit";
+import { SubmitBtn } from "@/components/Buttons";
 
 export default function CreateAccountPage() {
   return (
