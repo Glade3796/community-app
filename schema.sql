@@ -25,7 +25,7 @@ CREATE TABLE posts (
     post_type VARCHAR(255) CHECK (type IN ('asset', 'service', 'request' 'event', 'job', 'news', 'other')),
     title VARCHAR(255) NOT NULL,
     content TEXT,
-    quantity INT,
+    quantity TEXT,
     frequency TEXT,
     "date", DATE,
     available BOOLEAN DEFAULT TRUE,
