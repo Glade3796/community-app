@@ -77,3 +77,7 @@ body {
   border-radius: 45px;
   float: left;
 }
+
+input {
+  color: black;
+}
