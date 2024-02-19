@@ -1,33 +1,79 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: rgb(244, 244, 186);
+  background-image: linear-gradient(#fcd34d, #725d63, #fcd34d);
+  color: rgb(7, 13, 13);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: larger;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.animatedThing {
+  color: rgb(247, 246, 242);
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+.container button {
+  background-image: linear-gradient(
+    to bottom right,
+    #292516,
+    #fad86a,
+    #292516,
+    #daa2be
+  );
+  border: none;
+  box-sizing: border-box;
+  color: white;
+  padding: 30px 24px;
+  justify-content: center;
+  cursor: pointer;
+  width: 90%;
+  display: inline-block;
+  margin: 20px 10px;
+  border-radius: 45px;
+  transition: all 0.5s;
+  font-size: large;
+  align-items: center;
+}
+
+.container button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.container button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.container button:hover span {
+  padding-right: 35px;
+}
+
+.container button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.container button:not(:last-child) {
+  border-bottom: none;
+}
+.container button:hover {
+  background-color: #f01779;
+}
+
+.header {
+  flex-direction: row;
+  margin: 0%;
+  justify-content: center;
+}
+.Logo {
+  border-radius: 45px;
+  float: left;
 }

@@ -3,6 +3,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import Link from "next/link";
 import SiteNav from "./components/SiteNav";
+import Image from "next/image";
+import logo from "@/../public/images/Logo.png";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +20,13 @@ export default function RootLayout({ children }) {
         <body className={inter.className}>
           <header>
             <SiteNav />
+            <Image
+              src={logo}
+              alt="Helping hands logo"
+              width="150"
+              height="150"
+              className="Logo"
+            />
           </header>
           {children}
         </body>
