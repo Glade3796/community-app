@@ -14,7 +14,7 @@ address_postcode VARCHAR(255),
 biography TEXT,
 created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-clerk_auth_id TEXT,
+clerk_auth_id TEXT UNIQUE,
 profile_picture_url TEXT ,
 site_admin BOOLEAN DEFAULT FALSE)
 

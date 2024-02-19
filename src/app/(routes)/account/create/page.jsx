@@ -1,12 +1,18 @@
 //create account form, consider moving to component and forcing user to create an account if no profile exists for them
 
+import { createAccountSubmit } from "@/app/_lib/actions";
 import { SubmitBtn } from "@/components/Buttons";
+import { db } from "@/lib/db";
+import { auth } from "@clerk/nextjs";
 
-export default function CreateAccountPage() {
+export default async function CreateAccountPage() {
+  // get the clerk user id
+  const clerk_auth_id = auth().userId;
+
   return (
     <div>
       <h1>Create Account</h1>
-      <form className="grid grid-cols-2 gap-2">
+      <form className="grid grid-cols-2 gap-2" action={createAccountSubmit}>
         {/* user info */}
         <h3 className="col-span-2 text-lg">User info:</h3>
         <label htmlFor="username">Username:</label>
@@ -57,6 +63,8 @@ export default function CreateAccountPage() {
           placeholder="postcode"
           name="address_postcode"
         ></input>
+        {/* hidden */}
+        <input type="hidden" name="clerk_auth_id" value={clerk_auth_id}></input>
         <SubmitBtn />
       </form>
     </div>
