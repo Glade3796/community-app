@@ -9,8 +9,7 @@
 }
 
 body {
-  background-color: rgb(244, 244, 186);
-  background-image: linear-gradient(#fcd34d, #725d63, #fcd34d);
+  background-color: white;
   color: rgb(7, 13, 13);
   display: flex;
   flex-direction: column;
@@ -19,7 +18,7 @@ body {
 }
 
 .animatedThing {
-  color: rgb(247, 246, 242);
+  color: rgb(17, 16, 11);
 }
 .container {
   display: flex;
@@ -28,9 +27,9 @@ body {
 .container button {
   background-image: linear-gradient(
     to bottom right,
-    #292516,
+    #f94141,
     #fad86a,
-    #292516,
+    #d8651d,
     #daa2be
   );
   border: none;
