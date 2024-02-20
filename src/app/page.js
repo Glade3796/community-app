@@ -8,13 +8,13 @@ export default function Home() {
     <div>
       <div class="container">
         <nav>
-          <Link href="/">
+          <Link href="/home">
             <button>
               <span>What we do</span>
             </button>
           </Link>
           <AnimateIn>
-            <p>Bringing our Communtiy together</p>
+            <p>Bringing our Community together</p>
           </AnimateIn>
           <Link href="/about">
             <button>
