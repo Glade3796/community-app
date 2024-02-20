@@ -8,7 +8,7 @@ export default function Home() {
     <div>
       <div class="container">
         <nav>
-          <Link href="/">
+          <Link href="/home">
             <button>
               <span>What we do</span>
             </button>
