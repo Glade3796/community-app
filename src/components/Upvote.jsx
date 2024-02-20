@@ -1,7 +1,8 @@
-import { UpvoteButton } from "./UpvoteButton"
+import { UpvoteBtn } from "./Buttons";
+
 export default function Upvote() {
     
     return (<div>uppvote a post
-        <UpvoteButton />
+        <UpvoteBtn />
     </div>)
 }

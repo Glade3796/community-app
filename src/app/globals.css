@@ -9,8 +9,7 @@
 }
 
 body {
-  background-color: rgb(244, 244, 186);
-  background-image: linear-gradient(#fcd34d, #725d63, #fcd34d);
+  background-color: white;;
   color: rgb(7, 13, 13);
   display: flex;
   flex-direction: column;
@@ -83,10 +82,10 @@ body {
   margin: 0%;
   justify-content: center;
 }
-.Logo {
+/* .Logo {
   border-radius: 45px;
   float: left;
-}
+} */
 
 input {
   color: black;
