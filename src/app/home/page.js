@@ -54,7 +54,7 @@ export default function HomePage() {
 
         <li>
           <strong>Large brands : </strong>Provide locally relevant products and
-          services that improve neighbours’ daily lives.
+          services that improve neighbours daily lives.
         </li>
         <h2>General Information</h2>
         <li>
@@ -63,7 +63,7 @@ export default function HomePage() {
         </li>
         <li>
           Create familiarity and build trust by helping members recognise the
-          office staff, what do they do, and how to contact them{" "}
+          office staff, what do they do, and how to contact them
         </li>
         <li>Available community-based programs and resources</li>
         <li>Follow-ups to issues and questions </li>
