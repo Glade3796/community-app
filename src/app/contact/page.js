@@ -38,7 +38,7 @@ export default function ContactPage() {
         <li>
           If you are experiencing an issue with the Nextdoor app or website, the
           most effective way to let us know is to send an message to our support
-          team's email : <strong>FAAA_support@hotmail.co.uk</strong>
+          team&apos;s email : <strong>FAAA_support@hotmail.co.uk</strong>
         </li>
       </ul>
     </div>
