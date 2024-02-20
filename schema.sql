@@ -85,3 +85,21 @@ CREATE TABLE star (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     UNIQUE(user_id, post_id, comment_id, star_type)
 );
+
+-- INSERT INTO tags (content) VALUES ('tag1'), ('tag2'), ('tag3');
+
+-- INSERT INTO post_tags (post_id, tag_id) VALUES
+-- (1, 1),
+-- (2, 2),
+-- (3, 3),
+-- (4, 1),
+-- (5, 2),
+-- (6, 3),
+-- (7, 1);
+
+-- ALTER TABLE posts
+-- ADD COLUMN likes INT DEFAULT 0;
+
+-- UPDATE posts
+-- SET likes = likes + 1
+-- WHERE id = postId;

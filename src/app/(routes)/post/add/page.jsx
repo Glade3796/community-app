@@ -1,5 +1,5 @@
 import { db } from "@/_lib/db";
-import AddServiceForm from "@/app/(routes)/service/add/AddServiceForm";
+import AddServiceForm from "@/app/(routes)/post/add/AddServiceForm";
 import { auth } from "@clerk/nextjs";
 
 export default async function AddServicePage() {
