@@ -10,8 +10,8 @@ export function SaveButton() {
   return <button disabled={pending}>{pending ? `Saving...` : `Save`}</button>;
 }
 
-//submit button
-export function SubmitBtn() {
+//create profile button
+export function CreateProfBtn() {
   const { pending } = useFormStatus();
 
   return (
@@ -21,6 +21,21 @@ export function SubmitBtn() {
       className="col-span-2 w-1/3 bg-green-950 hover:bg-green-400 justify-self-center text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
     >
       {pending ? `Creating...` : `Create account`}
+    </button>
+  );
+}
+
+//update button
+export function UpdateProfBtn() {
+  const { pending } = useFormStatus();
+
+  return (
+    <button
+      type="submit"
+      disabled={pending}
+      className="col-span-2 w-1/3 bg-green-950 hover:bg-green-400 justify-self-center text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+    >
+      {pending ? `Updating...` : `Update Profile`}
     </button>
   );
 }
@@ -39,7 +54,7 @@ export function AddPostBtn({ disableBtn }) {
   );
 }
 
-//delete button
+//upvote button
 export function UpvoteBtn() {
   const { pending } = useFormStatus();
 
@@ -47,7 +62,7 @@ export function UpvoteBtn() {
 }
 
 //recover button
-export function RecoverBtn({reset}) {
+export function RecoverBtn({ reset }) {
   return (
     <button
       onClick={

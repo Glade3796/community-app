@@ -1,6 +1,7 @@
 "use server";
 
 import { db } from "@/_lib/db";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 //create account action
@@ -127,5 +128,52 @@ export async function createServicePost(formData) {
     console.error("Error creating post:", error);
   } finally {
     redirect(`/service/${post_id}`);
+  }
+}
+export async function editAccountSubmit(formData) {
+  const updated_at = Date.now() / 1000;
+  // destructure the form data
+  const username = formData.get("username");
+  const full_name = formData.get("fullname");
+  const organisation_name = formData.get("organisation");
+  const biography = formData.get("biography");
+  const email = formData.get("email");
+  const phone_number = formData.get("phone_number");
+  const address_number = formData.get("address_number");
+  const address_street = formData.get("address_street");
+  const address_city = formData.get("address_city");
+  const address_postcode = formData.get("address_postcode");
+  const id = formData.get("id");
+  //console log data (server side)
+  try {
+    console.log("submit edit", formData);
+    // create the account
+    const response = await db.query(
+      `UPDATE users SET username=$1, full_name=$2, organisation_name=$3, biography=$4, email=$5, phone_number=$6, address_number=$7, address_street=$8, address_city=$9, address_postcode=$10 WHERE id=$11 RETURNING *`,
+      [
+        username,
+        full_name,
+        organisation_name,
+        biography,
+        email,
+        phone_number,
+        address_number,
+        address_street,
+        address_city,
+        address_postcode,
+        id,
+      ]
+    );
+    const res = response.rows[0];
+    if (res.length === 0) {
+      throw new Error("No user found");
+    }
+    console.log("updated user account:", res);
+    //error handling
+  } catch (error) {
+    console.error("Error updating account:", error);
+  } finally {
+    revalidatePath("/account/profile");
+    redirect("/account/profile");
   }
 }
