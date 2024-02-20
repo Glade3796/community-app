@@ -12,7 +12,6 @@ export default function Error({ error, reset }) {
   const text = error.message;
   return (
     <div className="flex flex-col justify-center items-center gap-4 m-4 ">
-      <h2>Hey cutie!</h2>
       <p className="border border-white p-4">{text}</p>
       <p>
         Don&apos;t worry though, go back and try again, if the error persists
