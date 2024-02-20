@@ -119,7 +119,7 @@ export async function createServicePost(formData) {
         closed,
       ]
     );
-    console.log("res", response.rows[0].id);
+    // console.log("res", response.rows[0].id);
     post_id = response.rows[0].id;
 
     //error handling
