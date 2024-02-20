@@ -16,14 +16,14 @@ export default async function SingleServicePage({ params }) {
     [id]
   );
   const post = postData.rows[0];
-  console.log(rows, post);
+  // console.log(rows, post);
   //if the user is the owner of the post or the user is a site admin set owner to true
   if (rows[0].id === post.user_id || rows[0].site_admin) {
     owner = true;
   } else {
     owner = false;
   }
-  console.log(owner);
+  // console.log(owner);
   return (
     <div>
       <p>{post.created_at.toDateString()}</p>

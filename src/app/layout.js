@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
+import { ClerkProvider, UserButton, auth } from "@clerk/nextjs";
 import "./globals.css";
 import Link from "next/link";
 import SiteNav from "../components/SiteNav";
@@ -27,6 +27,7 @@ export default function RootLayout({ children }) {
               height="150"
               className="Logo"
             />
+            <UserButton />
           </header>
           {children}
         </body>
