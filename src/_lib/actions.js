@@ -69,7 +69,7 @@ export async function createAccountSubmit(formData) {
     }
   }
 }
-
+//* create post action
 export async function createPost(formData) {
   // destructure the form data
   const user_id = formData.get("user_id");
@@ -81,6 +81,7 @@ export async function createPost(formData) {
   const date = formData.get("date");
   const available = formData.get("available");
   const closed = formData.get("closed");
+  const show_address = formData.get("show_address");
   //console log data (server side)
   let post_id = null;
   try {
@@ -107,7 +108,7 @@ export async function createPost(formData) {
     );
     // create the post
     const response = await db.query(
-      `INSERT INTO posts (user_id, post_type, title, content, quantity, frequency, date, available, closed) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id`,
+      `INSERT INTO posts (user_id, post_type, title, content, quantity, frequency, date, available, closed, show_address) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id`,
       [
         user_id,
         post_type,
@@ -118,6 +119,7 @@ export async function createPost(formData) {
         date,
         available,
         closed,
+        show_address
       ]
     );
     // console.log("res", response.rows[0].id);
@@ -130,6 +132,8 @@ export async function createPost(formData) {
     redirect(`/post/${post_id}`);
   }
 }
+
+//* edit account action
 export async function editAccountSubmit(formData) {
   const updated_at = Date.now() / 1000;
   // destructure the form data

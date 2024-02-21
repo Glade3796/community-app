@@ -17,19 +17,18 @@ export default function AddPostForm({ user_id }) {
     date: null,
     available: true,
     closed: false,
+    show_address: false,
   });
   function handleInput(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
-  //closed checkbox logic
-  function handleClosed() {
-    setForm({ ...form, closed: !form.closed });
-  }
-  //available checkbox logic
-  function handleAvailable() {
-    setForm({ ...form, available: !form.available });
-  }
 
+  // checkbox logic
+  function handleCheckBox(e) {
+    const val = e.target.name;
+    setForm({ ...form, [e.target.name]: !form[val] });
+   
+  }
   //disable button if form is invalid:
 
   //! disabled for development
@@ -46,7 +45,7 @@ export default function AddPostForm({ user_id }) {
   // }, [form.title.length, form.content.length]);
   return (
     <form
-      action={createServicePost}
+      action={createPost}
       className="flex flex-col justify-center items-center gap-4"
     >
       <h1>New post</h1>
@@ -114,7 +113,7 @@ export default function AddPostForm({ user_id }) {
             name="available"
             value={true}
             defaultChecked
-            onInput={handleAvailable}
+            onInput={handleCheckBox}
           />
         </div>
       )}
@@ -126,7 +125,7 @@ export default function AddPostForm({ user_id }) {
             name="available"
             value={true}
             defaultChecked
-            onInput={handleAvailable}
+            onInput={handleCheckBox}
           />
         </div>
       )}
@@ -137,7 +136,16 @@ export default function AddPostForm({ user_id }) {
           name="closed"
           value={form.closed}
           defaultChecked
-          onInput={handleClosed}
+          onInput={handleCheckBox}
+        />
+      </div>
+      <div>
+        <label htmlFor="show_address">Show Address?</label>
+        <input
+          type="checkbox"
+          name="show_address"
+          value={form.show_address}
+          onInput={handleCheckBox}
         />
       </div>
       {form.closed && (
