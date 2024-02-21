@@ -2,7 +2,7 @@ import { db } from "@/_lib/db";
 import { auth } from "@clerk/nextjs";
 import Link from "next/link";
 
-export default async function SingleServicePage({ params }) {
+export default async function SinglePostPage({ params }) {
   let owner = false;
   //fetch params.id (the post id from the url), and the clerk_auth_id from the user to compare against db, if the user is the owner of the post, and fetch the post data.
   const { id } = params;
@@ -33,7 +33,7 @@ export default async function SingleServicePage({ params }) {
       {/* supposed to show edit and edit time/date if edited??? */}
       <p>{post.post_type}</p>
       <h1>{post.title}</h1>
-      {owner && <Link href={`/service/${id}}/edit`}>edit</Link>}
+      {owner && <Link href={`/post/${id}}/edit`}>edit</Link>}
       {/* TODO implement post edit */}
       <p>{post.content}</p>
       {post.quantity && <p>Quantity: {post.quantity}</p>}
@@ -43,7 +43,7 @@ export default async function SingleServicePage({ params }) {
       {!post.closed && <p>Closed</p>}
       <p>Owner: {post.username}</p>
       {/* TODO include address, if set to visisble */}
-      {owner && <Link href={`/service/${id}/delete`}>delete</Link>}
+      {owner && <Link href={`/post/${id}/delete`}>delete</Link>}
 
       {/* TODO implement simple post delete */}
     </div>
