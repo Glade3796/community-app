@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react";
 
-export function SortBy({ onSortByRecent, onSortByMostLiked }) {
+export function SortBy({ onSortByRecent, onSortByMostStarred }) {
   const [sortBy, setSortBy] = useState("recent");
 
   const handleSortByRecent = () => {
@@ -9,9 +9,9 @@ export function SortBy({ onSortByRecent, onSortByMostLiked }) {
     onSortByRecent();
   };
 
-  const handleSortByMostLiked = () => {
-    setSortBy("liked");
-    onSortByMostLiked();
+  const handleSortByMostStarred = () => {
+    setSortBy("starred");
+    onSortByMostStarred();
   };
 
   return (
@@ -24,9 +24,9 @@ export function SortBy({ onSortByRecent, onSortByMostLiked }) {
           Most Recent
         </button>
         <button
-          onClick={handleSortByMostLiked}
+          onClick={handleSortByMostStarred}
         >
-          Most Liked
+          Most Popular
         </button>
       </div>
     </div>

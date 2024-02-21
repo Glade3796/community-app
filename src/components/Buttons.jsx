@@ -55,10 +55,10 @@ export function AddPostBtn({ disableBtn }) {
 }
 
 //upvote button
-export function LikeBtn() {
+export function StarBtn() {
   const { pending } = useFormStatus();
 
-  return <button disabled={pending}>{pending ? `liking...` : `👍`}</button>;
+  return <button disabled={pending}>{pending ? `liking...` : `⭐`}</button>;
 }
 
 //recover button
