@@ -9,7 +9,7 @@
 }
 
 body {
-  background-color: white;;
+  background-color: white;
   color: rgb(7, 13, 13);
   display: flex;
   flex-direction: column;
@@ -17,43 +17,83 @@ body {
   font-size: larger;
 }
 
-.animatedThing {
-  color: rgb(247, 246, 242);
+input {
+  color: black;
 }
-.container {
+
+header {
+  display: inline;
   display: flex;
-  justify-content: space-between;
 }
-.container button {
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #413434;
+  display: flex;
+  justify-content: center;
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #4aaed8;
+}
+
+li {
+  float: left;
+}
+.profile {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.Logo {
+  border-radius: 30px;
+}
+.animatedThing {
+  color: rgb(35, 32, 20);
+  font-size: small;
+  width: 50%;
+  justify-content: center;
+}
+button {
   background-image: linear-gradient(
     to bottom right,
-    #292516,
-    #fad86a,
-    #292516,
-    #daa2be
+    #41b2f9,
+    #6ae7fa,
+    #0e9c40,
+    #a2dacd
   );
   border: none;
   box-sizing: border-box;
   color: white;
-  padding: 30px 24px;
+  padding: 20px 24px;
   justify-content: center;
   cursor: pointer;
-  width: 90%;
+  width: 20%;
   display: inline-block;
   margin: 20px 10px;
   border-radius: 45px;
   transition: all 0.5s;
-  font-size: large;
+  font-size: larger;
   align-items: center;
 }
 
-.container button span {
+button span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
-.container button span:after {
+button span:after {
   content: "\00bb";
   position: absolute;
   opacity: 0;
@@ -61,33 +101,19 @@ body {
   right: -20px;
   transition: 0.5s;
 }
-.container button:hover span {
+button:hover span {
   padding-right: 35px;
 }
 
-.container button:hover span:after {
+button:hover span:after {
   opacity: 1;
   right: 0;
 }
-
-.container button:not(:last-child) {
-  border-bottom: none;
-}
-.container button:hover {
-  background-color: #f01779;
-}
-
-.header {
-  flex-direction: row;
-  margin: 0%;
-  justify-content: center;
-}
-/* .Logo {
-  border-radius: 45px;
-  float: left;
-} */
-
-input {
-  color: black;
+.post_area {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
 }
 
