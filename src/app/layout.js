@@ -20,13 +20,6 @@ export default function RootLayout({ children }) {
         <body className={inter.className}>
           <header>
             <SiteNav />
-            <Image
-              src={logo}
-              alt="Helping hands logo"
-              width="150"
-              height="150"
-              className="Logo"
-            />
             <UserButton />
           </header>
           {children}
