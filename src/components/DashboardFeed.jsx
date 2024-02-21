@@ -6,11 +6,11 @@ import {auth} from "@clerk/nextjs";
 
 export async function DashboardFeed() {
    const clerk_auth_id = auth().userId;
-   const response = await db.query(
-    `SELECT id FROM users WHERE clerk_auth_id = $1`,
+   const userInfo = await db.query(
+    `SELECT * FROM users WHERE clerk_auth_id = $1`,
     [clerk_auth_id]
   );
-  const user_id = response.rows[0].id;
+  const user_id = userInfo.rows[0].id;
   const user_town = userInfo.rows[0].address_city;
   
   const { rows: posts } = await db.query(`
@@ -20,9 +20,9 @@ export async function DashboardFeed() {
     LEFT JOIN post_tags ON posts.id = post_tags.post_id
     LEFT JOIN tags ON post_tags.tag_id = tags.id
     LEFT JOIN star ON posts.id = star.post_id
-    GROUP BY posts.id, users.username, tags.content
-    ORDER BY posts.created_at DESC
     WHERE users.address_city = $1
+    GROUP BY posts.id, users.username, tags.content, users.address_city, users.address_postcode
+    ORDER BY posts.created_at DESC
     `,
     [user_town]
   );
@@ -32,10 +32,9 @@ export async function DashboardFeed() {
   // TODO consider separating posts with a sort function rather than in-query
   // TODO consider adding a limit to the number of posts returned per page
  
-
   return (
     <>
-      <p>location: {user_town}</p>
+      <p>My Town: {user_town}</p>
       <ul className="max-w-screen-lg mx-auto p-4 mb-4">
         {posts.map((post) => (
           <li key={post.post_id} className="py-4 border-b border-zinc-800">

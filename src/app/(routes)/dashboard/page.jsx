@@ -1,4 +1,5 @@
 import { DashboardFeed } from "@/components/DashboardFeed";
+import { SortBy } from "@/components/Sort";
 
 export default function DashboardPage() {
   return (
