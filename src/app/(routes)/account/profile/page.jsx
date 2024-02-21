@@ -32,7 +32,6 @@ export default async function ProfilePage() {
         {user.verified && <p>Verified</p>}
         {user.site_admin && <p>Site admin</p>}
         <Link href="/account/edit">Edit profile</Link>
-        {/* TODO - implenet edit profile feature  */}
       </div>
 
       <div>

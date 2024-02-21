@@ -12,11 +12,11 @@ export default async function SinglePostPage({ params }) {
     [clerk_auth_id]
   );
   const postData = await db.query(
-    `SELECT *, users.username AS username FROM posts JOIN users ON users.id = posts.user_id WHERE posts.id = $1`,
+    `SELECT *, users.username AS username, users.address_number AS address_number, users.address_street AS address_street, users.address_city AS address_city, users.address_postcode AS address_postcode FROM posts JOIN users ON users.id = posts.user_id WHERE posts.id = $1`,
     [id]
   );
   const post = postData.rows[0];
-  // console.log(rows, post);
+
   //if the user is the owner of the post or the user is a site admin set owner to true
   if (rows[0].id === post.user_id || rows[0].site_admin) {
     owner = true;
@@ -42,7 +42,15 @@ export default async function SinglePostPage({ params }) {
       {post.available && <p>Available</p>}
       {!post.closed && <p>Closed</p>}
       <p>Owner: {post.username}</p>
-      {/* TODO include address, if set to visisble */}
+      {/* include address, if set to visisble */}
+      {post.show_address && (
+        <div>
+          <p>
+            Address: {post.address_number} {post.address_street},{" "}
+            {post.address_city}, {post.address_postcode}
+          </p>
+        </div>
+      )}
       {owner && <Link href={`/post/${id}/delete`}>delete</Link>}
 
       {/* TODO implement simple post delete */}
