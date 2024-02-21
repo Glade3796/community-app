@@ -1,24 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
-import { SelectPostType } from "../../../../components/DropDownInputs";
-import PostTitle from "../../../../components/PostTitle";
-import { AddPostBtn } from "@/components/Buttons";
-import { createPost } from "@/_lib/actions";
+import { AddPostBtn, EditPostBtn } from "@/components/Buttons";
+import { editPost } from "@/_lib/actions";
+import { SelectPostType } from "@/components/DropDownInputs";
+import PostTitle from "@/components/PostTitle";
 
-export default function AddPostForm({ user_id }) {
+export default function EditPostForm({ user_id, post }) {
   const [disableBtn, setDisableBtn] = useState(false); //set to false for development
-  const [form, setForm] = useState({
-    user_id: user_id,
-    post_type: "asset",
-    title: "",
-    content: "",
-    quantity: undefined,
-    frequency: null,
-    date: null,
-    available: true,
-    closed: false,
-    show_address: false,
-  });
+  const [form, setForm] = useState(post);
+  console.log(form);
   function handleInput(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
@@ -44,12 +34,14 @@ export default function AddPostForm({ user_id }) {
   // }, [form.title.length, form.content.length]);
   return (
     <form
-      action={createPost}
+      action={editPost}
       className="flex flex-col justify-center items-center gap-4"
     >
-      <h1>New post</h1>
-      <SelectPostType handleInput={handleInput} />
+      <h1>Edit post #{post.id}</h1>
+      <SelectPostType handleInput={handleInput} postType={post.post_type} />
       <input type="hidden" name="user_id" value={user_id} />
+      <input type="hidden" name="id" value={post.id} />
+
       <PostTitle form={form} handleInput={handleInput} />
       {/* title validation */}
       {form.title.length < 5 && !!form.title && (
@@ -62,6 +54,7 @@ export default function AddPostForm({ user_id }) {
           id="content"
           name="content"
           onInput={handleInput}
+          value={form.content}
           // minLength={30} disabled for development
           // maxLength={500} disabled for development
         />
@@ -82,6 +75,7 @@ export default function AddPostForm({ user_id }) {
             name="quantity"
             placeholder="quantity"
             onInput={handleInput}
+            value={form.quantity}
           ></input>
         </div>
       )}
@@ -94,6 +88,7 @@ export default function AddPostForm({ user_id }) {
             name="frequency"
             placeholder="frequency"
             onInput={handleInput}
+            value={form.frequency}
           ></input>
         </div>
       )}
@@ -101,7 +96,12 @@ export default function AddPostForm({ user_id }) {
       {form.post_type === "event" && (
         <div>
           <label htmlFor="date">Date of event: </label>
-          <input type="date" name="date" onInput={handleInput} />
+          <input
+            type="date"
+            name="date"
+            onInput={handleInput}
+            value={form.date}
+          />
         </div>
       )}
       {form.post_type === "service" && (
@@ -110,9 +110,9 @@ export default function AddPostForm({ user_id }) {
           <input
             type="checkbox"
             name="available"
-            value={true}
             defaultChecked
             onInput={handleCheckBox}
+            value={form.available}
           />
         </div>
       )}
@@ -122,7 +122,7 @@ export default function AddPostForm({ user_id }) {
           <input
             type="checkbox"
             name="available"
-            value={true}
+            value={form.available}
             defaultChecked
             onInput={handleCheckBox}
           />
@@ -150,7 +150,7 @@ export default function AddPostForm({ user_id }) {
       {form.closed && (
         <p>you won&apos;t hear from the community if they can&apos;t reply</p>
       )}
-      <AddPostBtn disableBtn={disableBtn} />
+      <EditPostBtn disableBtn={disableBtn} />
       {disableBtn && <p>Please ensure required (*) items are filled inn</p>}
     </form>
   );

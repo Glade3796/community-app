@@ -53,7 +53,19 @@ export function AddPostBtn({ disableBtn }) {
     </button>
   );
 }
-
+//edit post button
+export function EditPostBtn({ disableBtn }) {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      type="submit"
+      disabled={pending || disableBtn}
+      className="col-span-2 w-1/3 bg-green-950 hover:bg-green-400 justify-self-center text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      {pending ? `Editing...` : `Update post`}
+    </button>
+  );
+}
 //upvote button
 export function StarBtn() {
   const { pending } = useFormStatus();

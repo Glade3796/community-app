@@ -1,7 +1,7 @@
 //Drop down components
 "use client";
 //Drop down for selecting the type of post
-export function SelectPostType({ handleInput }) {
+export function SelectPostType({ handleInput, postType }) {
   const types = [
     "asset",
     "service",
@@ -18,7 +18,7 @@ export function SelectPostType({ handleInput }) {
         name="post_type"
         id="postType"
         onInput={handleInput}
-        defaultValue={"asset"}
+        defaultValue={postType || "asset"}
       >
         {types.map((type, i) => (
           <option value={type} key={i + type}>
