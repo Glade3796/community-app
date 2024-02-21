@@ -1,5 +1,7 @@
 import { StarBtn } from "./Buttons";
-import { db } from "@/_lib/db.js"
+import { db } from "@/_lib/db.js";
+import { revalidatePath } from "next/cache";
+
 
 export default function StarPost({ postId, userId }) {
   async function star() {
@@ -11,7 +13,8 @@ export default function StarPost({ postId, userId }) {
       await db.query(
         "INSERT INTO star (user_id, post_id, star_type) VALUES ($1, $2, 'post')",
         [userId, postId]
-      );
+      ); revalidatePath(`/dashboard`);
+  
       return { success: true, message: "Post starred successfully." };
     } catch (error) {
       console.error("Error starring post:", error.message);
