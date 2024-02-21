@@ -70,7 +70,7 @@ export async function createAccountSubmit(formData) {
   }
 }
 
-export async function createServicePost(formData) {
+export async function createPost(formData) {
   // destructure the form data
   const user_id = formData.get("user_id");
   const post_type = formData.get("post_type");
@@ -127,7 +127,7 @@ export async function createServicePost(formData) {
   } catch (error) {
     console.error("Error creating post:", error);
   } finally {
-    redirect(`/service/${post_id}`);
+    redirect(`/post/${post_id}`);
   }
 }
 export async function editAccountSubmit(formData) {
