@@ -15,9 +15,11 @@ body {
   justify-content: center;
   background-color: #f2f3f4;
 }
+
 main {
   padding-left: 1rem;
 }
+
 header, footer {
   display: flex;
   flex-direction: row;

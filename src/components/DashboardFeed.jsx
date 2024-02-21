@@ -35,6 +35,7 @@ export async function DashboardFeed({ sortBy }) {
   return (
     <>
       <p>My Town: {user_town}</p>
+      {/* make this a drop down */}
       <ul className="max-w-screen-lg mx-auto p-4 mb-4">
         {posts.map((post) => (
           <li key={post.post_id} className="py-4 border-b border-zinc-800">
