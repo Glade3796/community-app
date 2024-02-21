@@ -119,7 +119,7 @@ export async function createPost(formData) {
         date,
         available,
         closed,
-        show_address
+        show_address,
       ]
     );
     // console.log("res", response.rows[0].id);
@@ -179,5 +179,68 @@ export async function editAccountSubmit(formData) {
   } finally {
     revalidatePath("/account/profile");
     redirect("/account/profile");
+  }
+}
+//* edit post action
+export async function editPost(formData) {
+  // destructure the form data
+  const user_id = formData.get("user_id");
+  const post_type = formData.get("post_type");
+  const title = formData.get("title");
+  const content = formData.get("content");
+  const quantity = formData.get("quantity");
+  const frequency = formData.get("frequency");
+  const date = formData.get("date");
+  const available = formData.get("available");
+  const closed = formData.get("closed");
+  const show_address = formData.get("show_address");
+  const id = formData.get("id");
+  //console log data (server side)
+  try {
+    console.log(
+      "Editing post: --> \n user:",
+      user_id,
+      "| post_type:",
+      post_type,
+      "|\n title:",
+      title,
+      "|\n content:",
+      content,
+      "| quantity:",
+      quantity,
+      "| frequency:",
+      frequency,
+      "| date:",
+      date,
+      "|\n available:",
+      available,
+      "| closed:",
+      closed,
+      "---> to the database."
+    );
+    // create the post
+    const response = await db.query(
+      `UPDATE posts SET user_id=$1, post_type=$2, title=$3, content=$4, quantity=$5, frequency=$6, date=$7, available=$8, closed=$9, show_address=$10 WHERE id=$11`,
+      [
+        user_id,
+        post_type,
+        title,
+        content,
+        quantity,
+        frequency,
+        date,
+        available,
+        closed,
+        show_address,
+        id,
+      ]
+    );
+    // console.log("res", response.rows[0].id);
+
+    //error handling
+  } catch (error) {
+    console.error("Error creating post:", error);
+  } finally {
+    redirect(`/post/${id}`);
   }
 }

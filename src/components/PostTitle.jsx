@@ -33,6 +33,7 @@ export default function PostTitle({ form, handleInput, title }) {
         placeholder={placeholder}
         onInput={handleInput}
         required
+        value={form.title}
         // minLength={5} disabled for development
       />
     </div>
