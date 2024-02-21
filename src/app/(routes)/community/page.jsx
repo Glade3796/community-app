@@ -1,4 +1,4 @@
-export default function AboutPage() {
+export default function CommunityPage() {
   return (
     <div>
       <h1>Community Guidelines</h1>
