@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react";
+import Link from "next/link";
 
 export function SortBy({ onSortByRecent, onSortByMostStarred }) {
   const [sortBy, setSortBy] = useState("recent");
@@ -32,3 +33,17 @@ export function SortBy({ onSortByRecent, onSortByMostStarred }) {
     </div>
   );
 }
+
+
+// return (
+//   <div>
+//     <h2>Sort By</h2>
+//     <div>
+//       <Link href="/dashboard/sort?popularity">
+//         Most Popular </Link>
+//       <Link href="/dashboard">
+//         Most Recent </Link>
+//     </div>
+//   </div>
+// );
+// }
