@@ -4,7 +4,7 @@ import StarPost from "./StarPost";
 import {auth} from "@clerk/nextjs";
 
 
-export async function DashboardFeed() {
+export async function DashboardFeed({ sortBy }) {
    const clerk_auth_id = auth().userId;
    const userInfo = await db.query(
     `SELECT * FROM users WHERE clerk_auth_id = $1`,
@@ -39,12 +39,13 @@ export async function DashboardFeed() {
         {posts.map((post) => (
           <li key={post.post_id} className="py-4 border-b border-zinc-800">
             <Link href={`/post/${post.post_id}`}>
-            <strong>{post.post_title}</strong>
+            <strong className="text-3xl">{post.post_title}</strong>
             </Link>
-            <p><Link href={`/post/${post.post_id}`}>{post.post_content}</Link></p>
-            <p className="text-zinc-400">posted by {post.posted_by}</p><p className="text-indigo-500">{post.tag_content}</p>
-            <StarPost postId={post.post_id} userId={user_id}/><p>Total Stars: {post.star_count}</p>
+            <p className="text-xl" ><Link href={`/post/${post.post_id}`}>{post.post_content}</Link></p>
+            <p className="text-zinc-400">posted by {post.posted_by}</p>
+            <div className="flex items-center"><StarPost postId={post.post_id} userId={user_id}/><p className="ml-2">: {post.star_count} stars</p></div>
             {post.show_address && <p>{post.postcode}</p>}
+            <p className="text-indigo-500">#{post.tag_content}</p>
           </li>
         ))}
       </ul>
