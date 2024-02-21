@@ -1,15 +1,13 @@
-import Image from "next/image";
-import nicola from "@/../public/images/nicola.png";
+import { SignIn, UserButton} from "@clerk/nextjs";
 import Link from "next/link";
-import AnimateIn from "@/components/AnimateIn";
-import profile from "@/../public/images/profile.png";
-import logo from "@/../public/images/Logo.png";
-import { DashboardFeed } from "@/components/DashboardFeed";
+
 
 export default function Home() {
   return (
     <div>
-      <p>Share with your community</p>
+      <p className="mb-4">Share with your community</p>
+      <SignIn />
+      <Link href="/post/add" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 mt-4">Share a post</Link>
     </div>
       
   );

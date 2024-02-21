@@ -20,6 +20,7 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
+        <SiteNav />
         <PageHeader />
           <main>{children}</main>
           <PageFooter />
