@@ -46,7 +46,7 @@ export async function DashboardFeed({ sortBy }) {
             <p className="text-zinc-400">posted by {post.posted_by}</p>
             <div className="flex items-center"><StarPost postId={post.post_id} userId={user_id}/><p className="ml-2">: {post.star_count} stars</p></div>
             {post.show_address && <p>{post.postcode}</p>}
-            <p className="text-indigo-500">#{post.tag_content}</p>
+            <Link href={`/tags/${post.tag_id}`}><p className="text-indigo-500">#{post.tag_content}</p></Link>
           </li>
         ))}
       </ul>
