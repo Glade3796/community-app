@@ -1,13 +1,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import profile from "@/../public/images/profile.png";
+import ht from "@/../public/images/ht.png";
 
 export default function PageHeader() {
     return (
         <header className="flex justify-between items-center px-4 py-2">
-            <Link href="/">
+            <div className="flex items-center gap-4"> <Image
+                src={ht}
+                alt="Helping hands logo"
+                width="80"
+                height="80"
+                className="Logo"
+              /><Link href="/">
                 <h2 className="text-3xl font-bold">Neighbourly</h2>
-            </Link>
+            </Link></div>
             <div className="flex items-center gap-4">
                 <Link href="/dashboard" className="text-blue-500 hover:underline">
                     Dashboard
