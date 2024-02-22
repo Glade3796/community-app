@@ -4,9 +4,6 @@ import "./globals.css";
 import PageFooter from "@/components/Footer";
 import PageHeader from "@/components/Header";
 
-
-
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -17,13 +14,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
-        <html lang="en">
-          <body className={inter.className}>
-              <PageHeader />
-            <main>{children}</main>
-            <PageFooter />
-          </body>
-        </html>
+      <html lang="en">
+        <body className={inter.className}>
+          <PageHeader />
+
+          <main>{children}</main>
+          <PageFooter />
+        </body>
+      </html>
     </ClerkProvider>
   );
 }
