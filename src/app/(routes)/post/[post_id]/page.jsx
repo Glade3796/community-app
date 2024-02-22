@@ -6,7 +6,7 @@ export default async function SinglePostPage({ params }) {
   let owner = false;
   //fetch params.id (the post id from the url), and the clerk_auth_id from the user to compare against db, if the user is the owner of the post, and fetch the post data.
   const { post_id } = params;
-  console.log("single page", params);
+
   const clerk_auth_id = auth().userId;
   const { rows } = await db.query(
     `SELECT * FROM users WHERE  clerk_auth_id = $1`,
@@ -25,7 +25,7 @@ export default async function SinglePostPage({ params }) {
   } else {
     owner = false;
   }
-  console.log("post id", post_id);
+
   return (
     <div>
       <p>{post.created_at.toDateString()}</p>

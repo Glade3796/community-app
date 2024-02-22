@@ -7,7 +7,7 @@ export default async function EditPost({ params }) {
 
   const post = await fetchPostData(post_id);
   const user = await fetchUserdata();
-  console.log(post);
+
   return (
     <div>
       <h1>Edit Post</h1>
