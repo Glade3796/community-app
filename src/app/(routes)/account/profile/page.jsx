@@ -10,6 +10,7 @@ export default async function ProfilePage() {
   console.log("posts", posts);
   return (
     <>
+    
       <div>
         <h1>{user.username}&apos;s profile page</h1>
         <p>Username: {user.username}</p>
@@ -24,8 +25,9 @@ export default async function ProfilePage() {
         </p>
         {user.verified && <p>Verified</p>}
         {user.site_admin && <p>Site admin</p>}
-        <Link href="/account/edit">Edit profile</Link>
+        <Link href="/account/edit"  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 mt-4">Edit profile</Link>
       </div>
+      <div><Link href="/account/starred" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 mt-4">Starred Posts</Link></div>
 
       <div>
         <h1>Posts</h1>
