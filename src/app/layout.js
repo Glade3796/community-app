@@ -3,7 +3,7 @@ import { ClerkProvider, UserButton, auth } from "@clerk/nextjs";
 import "./globals.css";
 import PageFooter from "@/components/Footer";
 import PageHeader from "@/components/Header";
-import DevSiteNav from "../components/DevSiteNav";
+
 
 
 
@@ -19,7 +19,6 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
         <html lang="en">
           <body className={inter.className}>
-            <DevSiteNav />
               <PageHeader />
             <main>{children}</main>
             <PageFooter />

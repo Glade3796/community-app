@@ -24,6 +24,9 @@ header, footer {
   display: flex;
   flex-direction: row;
   align-items: center;
+  color: #984447;
+  background-color: rgb(229 231 235);
+  z-index: 5;
 }
 
 
