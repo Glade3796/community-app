@@ -3,7 +3,7 @@ import { CreateProfBtn, SubmitBtn, UpdateProfBtn } from "./Buttons";
 
 export default function AccountForm({ clerk_auth_id, edit, userData }) {
   //   const [form, setForm] = useState({ userData });
-  console.log(userData);
+
   return (
     <form
       className="grid grid-cols-2 gap-2"

@@ -40,7 +40,35 @@ export async function fetchUsersPostData(user_id) {
     console.error("Error fetching post data:", error);
   }
 }
+export async function fetchAllPosts() {
+  try {
+    const response = await db.query(
+      `SELECT posts.id AS post_id, posts.title AS post_title, posts.content AS post_content, users.username AS posted_by, users.address_city AS city, users.address_postcode AS postcode, posts.show_address AS show_address, ARRAY_AGG(tags.content) AS tag_content, COUNT(star.id) AS star_count
+      FROM posts
+      JOIN users ON posts.user_id = users.id
+      LEFT JOIN post_tags ON posts.id = post_tags.post_id
+      LEFT JOIN tags ON post_tags.tag_id = tags.id
+      LEFT JOIN star ON posts.id = star.post_id
+      GROUP BY posts.id, users.username, users.address_city, users.address_postcode
+      ORDER BY posts.created_at DESC`
 
+      // SELECT posts.id AS post_id, posts.title AS post_title, posts.content AS post_content, users.username AS posted_by, users.address_city AS city, users.address_postcode AS postcode, posts.show_address AS show_address, tags.content AS tag_content, COUNT(star.id) AS star_count
+      // FROM posts
+      // JOIN users ON posts.user_id = users.id
+      // LEFT JOIN post_tags ON posts.id = post_tags.post_id
+      // LEFT JOIN tags ON post_tags.tag_id = tags.id
+      // LEFT JOIN star ON posts.id = star.post_id
+      // GROUP BY posts.id, users.username, tags.content, users.address_city, users.address_postcode
+      // ORDER BY posts.created_at DESC
+    );
+    return response.rows;
+  } catch (error) {
+    console.error("Error fetching town posts:", error);
+  }
+}
+
+//! deprecated
+//todo: remove
 export async function fetchTownPosts(user_town) {
   try {
     const response = await db.query(
@@ -60,5 +88,29 @@ export async function fetchTownPosts(user_town) {
     return response.rows;
   } catch (error) {
     console.error("Error fetching town posts:", error);
+  }
+}
+
+export async function fetchUsersStarredPosts() {
+  const clerk_auth_id = auth().userId;
+  try {
+    const response = await db.query(
+      `SELECT * FROM star WHERE user_id = (SELECT id FROM users WHERE clerk_auth_id = $1)`,
+      //   `
+      // SELECT posts.id AS post_id, posts.title AS post_title, posts.content AS post_content, users.username AS posted_by, users.address_city AS city, users.address_postcode AS postcode, posts.show_address AS show_address, tags.content AS tag_content, COUNT(star.id) AS star_count
+      // FROM posts
+      // JOIN users ON posts.user_id = users.id
+      // LEFT JOIN post_tags ON posts.id = post_tags.post_id
+      // LEFT JOIN tags ON post_tags.tag_id = tags.id
+      // LEFT JOIN star ON posts.id = star.post_id
+      // WHERE star.user_id = (SELECT id FROM users WHERE clerk_auth_id = $1)
+      // GROUP BY posts.id, users.username, tags.content, users.address_city, users.address_postcode
+      // ORDER BY posts.created_at DESC
+      // `,
+      [clerk_auth_id]
+    );
+    return response.rows;
+  } catch (error) {
+    console.error("Error fetching starred posts:", error);
   }
 }

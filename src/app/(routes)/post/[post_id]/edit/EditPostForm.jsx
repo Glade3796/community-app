@@ -8,7 +8,7 @@ import PostTitle from "@/components/PostTitle";
 export default function EditPostForm({ user_id, post }) {
   const [disableBtn, setDisableBtn] = useState(false); //set to false for development
   const [form, setForm] = useState(post);
-  console.log(form);
+
   function handleInput(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
