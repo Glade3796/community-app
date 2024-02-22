@@ -45,9 +45,9 @@ export default function AddPostForm({ user_id }) {
   return (
     <form
       action={createPost}
-      className="flex flex-col justify-center items-center gap-4"
+      className="w-max mt-8 p-8 flex flex-col justify-center items-center gap-4 border-solid border-black rounded-lg border-2 bg-gray-200"
     >
-      <h1>New post</h1>
+      <strong><h1 className="text-5xl p-2">Create New Post</h1></strong>
       <SelectPostType handleInput={handleInput} />
       <input type="hidden" name="user_id" value={user_id} />
       <PostTitle form={form} handleInput={handleInput} />

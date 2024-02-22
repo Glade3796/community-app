@@ -17,10 +17,20 @@ body {
 }
 
 main {
-  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
 
-header, footer {
+section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+header{
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -29,6 +39,20 @@ header, footer {
   z-index: 5;
 }
 
+footer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(229 231 235);
+  z-index: 5;
+}
+
+input,
+select,
+textarea {
+  padding: 0.25rem;
+  border: solid 1px black;
+  border-radius:5px;
+}
 
 /* ul {
   list-style-type: none;
