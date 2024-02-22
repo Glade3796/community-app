@@ -19,7 +19,7 @@ export default function Home() {
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
     <h1 class="text-4xl font-bold">Welcome to Neighbourly</h1>
     <AnimateIn ><p class="mt-2">Connecting Neighbors, Building Communities</p></AnimateIn>
-    <Link href="/post/add" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 mt-4">Get Started</Link>
+    <Link href="/post/add" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 mt-4 inline-block mx-auto my-4">Get Started</Link>
     <SignIn />
   </div>
 
