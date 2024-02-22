@@ -1,5 +1,6 @@
 import { fetchUserdata } from "@/_lib/fetch";
 import AccountForm from "@/components/AccountForm";
+import { auth } from "@clerk/nextjs";
 
 
 export default async function EditAccountPage() {
