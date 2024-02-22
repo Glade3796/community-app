@@ -1,19 +1,12 @@
-import { db } from "@/_lib/db";
+import { fetchUserdata } from "@/_lib/fetch";
 import AddPostForm from "@/app/(routes)/post/add/AddPostForm";
-import { auth } from "@clerk/nextjs";
 
 export default async function AddPostPage() {
   //get user id from clerk and use that to get user id from db
-  const clerk_auth_id = auth().userId;
-  const response = await db.query(
-    `SELECT id FROM users WHERE clerk_auth_id = $1`,
-    [clerk_auth_id]
-  );
-  const user_id = response.rows[0].id;
-
+  const user = await fetchUserdata();
   return (
     <>
-      <AddPostForm user_id={user_id} />
+      <AddPostForm user_id={user.id} />
     </>
   );
 }
