@@ -10,7 +10,7 @@ export default function PostFeed({ posts, starred_posts, user_id }) {
   }
   const searchParams = useSearchParams();
   const getTown = searchParams.get("town");
-  const town = getTown.charAt(0).toUpperCase() + getTown.slice(1);
+  const town = getTown?.charAt(0).toUpperCase() + getTown?.slice(1);
   function title() {
     if (searchParams.has("town")) {
       if (town === "all") {
