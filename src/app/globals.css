@@ -15,7 +15,44 @@ body {
   justify-content: center;
   background-color: #f2f3f4;
 }
+.share {
+  font-size: 0.5em;
+}
 
+.wave {
+  animation-name: wave-animation;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
 main {
   display: flex;
   flex-direction: column;
@@ -30,7 +67,7 @@ section {
   justify-content: space-evenly;
 }
 
-header{
+header {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -51,7 +88,7 @@ select,
 textarea {
   padding: 0.25rem;
   border: solid 1px black;
-  border-radius:5px;
+  border-radius: 5px;
 }
 
 /* ul {
@@ -144,4 +181,3 @@ button:hover span:after {
   padding: 10px;
   margin: 10px 0;
 }  */
-

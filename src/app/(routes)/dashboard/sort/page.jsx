@@ -1,8 +1,7 @@
-import { DashboardFeed } from '@/components/DashboardFeed';
+import { DashboardFeed } from "@/components/DashboardFeed";
 
 export default function SortPage({ searchParams, postArray }) {
-  
-  const sortMethod = searchParams.sort 
+  const sortMethod = searchParams.sort;
 
   if (!sortMethod) {
     return <DashboardFeed />;
