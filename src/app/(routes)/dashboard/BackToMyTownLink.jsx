@@ -13,7 +13,7 @@ export default function BackToMyTownLink() {
     return params.toString();
   });
   return (
-    <Link href={pathname + "?" + removeQueryString("town")}>
+    <Link className=" text-green-900"href={pathname + "?" + removeQueryString("town")}>
       back to my town
     </Link>
   );

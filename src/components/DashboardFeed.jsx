@@ -95,14 +95,14 @@ export function DashboardFeed({
 
   return (
     <>
-      {!searchParams.has("town") && <p>My Town: {user_town}</p>}
-      {searchParams.has("town") && <p>viewing posts from {getTown}</p>}
+      <div className="text-center w-630">{!searchParams.has("town") && <p className="text-lg text-green-900 font-semibold">My Town: {user_town}</p>}
+      {searchParams.has("town") && <p className="text-green-900 font-medium">viewing posts from {getTown}</p>}
       {getTown?.toLowerCase == user_town?.toLowerCase}
-      {showMyTown() && <BackToMyTownLink />}
+      {showMyTown() && <BackToMyTownLink />}</div>
       <TownDropDown cities={uniqueCities} selected={selTown} />
       {searchParams.has("sort") && <p>sorted by {sortText}</p>}
       {/* make this a drop down */}
-      <div className="max-w-screen-lg mx-auto p-4 mb-4">
+      <div className="mx-auto p-4 mb-4 w-630">
         {noPosts(filteredPosts) ? (
           <EmptyFeed
             hasPosts={userTownHasPosts()}

@@ -20,33 +20,33 @@ export default function SortByNav() {
   );
 
   return (
-    <div>
-      <h2>Sort By</h2>
-      <nav>
-        <Link
+    <div className="p-3 text-center">
+      <h2 className="text-xs">Sort By</h2>
+      <nav className="flex gap-8 text-center">
+        <p><Link
           href={
             // sort by popularity
             pathname + "?" + createQueryString("sort", "pop")
-          }
+          } className="underline"
         >
           Popularity
-        </Link>
-        <Link
+        </Link></p>
+        <p><Link
           href={
             // sort by date created (newest first)
             pathname + "?" + createQueryString("sort", "new")
-          }
+          } className="underline"
         >
           Newest
-        </Link>
-        <Link
+        </Link></p>
+        <p><Link
           href={
             // sort by date created (oldest first)
             pathname + "?" + createQueryString("sort", "old")
-          }
+          } className="underline"
         >
           Oldest
-        </Link>
+        </Link></p>
       </nav>
     </div>
   );

@@ -14,6 +14,7 @@ body {
   flex-direction: column;
   justify-content: center;
   background-color: #f2f3f4;
+  min-height: 100vh;
 }
 .share {
   font-size: 0.5em;
@@ -71,8 +72,9 @@ header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: #984447;
   background-color: rgb(229 231 235);
+  color: #3f4d32;
+  opacity: 0.9;
   z-index: 5;
 }
 
@@ -81,14 +83,21 @@ footer {
   flex-direction: column;
   background-color: rgb(229 231 235);
   z-index: 5;
+  opacity: 0.875;
+  margin-top:0;
+  
 }
-
+form {
+  color:black;
+}
 input,
 select,
 textarea {
   padding: 0.25rem;
   border: solid 1px black;
   border-radius: 5px;
+  text-align: center;
+  background-color: white;
 }
 
 /* ul {

@@ -16,7 +16,7 @@ export default function PostFeed({ posts, starred_posts, user_id }) {
       if (town === "all") {
         return "All Posts";
       }
-      return `Posts from ${town}`;
+      return `All posts from ${town}`;
     }
 
     return null;
@@ -31,7 +31,7 @@ export default function PostFeed({ posts, starred_posts, user_id }) {
       )}
       <ul>
         {posts.map((post) => (
-          <li key={post.post_id} className="py-4 border-b border-zinc-800">
+          <li key={post.post_id} className="py-4 border-b border-lime-900">
             <Link href={`/post/${post.post_id}`}>
               <strong className="text-3xl">{post.post_title}</strong>
             </Link>

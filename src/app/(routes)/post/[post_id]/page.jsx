@@ -27,35 +27,32 @@ export default async function SinglePostPage({ params }) {
   }
 
   return (
-    <div>
-      <p>{post.created_at.toDateString()}</p>
+    <div className="w-full max-w-2xl mx-auto px-4 m-5 border border-lime-800 rounded-lg bg-blue-100">
+      <p className="text-gray-500">{post.created_at.toDateString()}</p>
       {post.updated_at === post.created_at && (
-        <p>edited |{post.updated_at.toDateString()}|</p>
+        <p className="text-gray-500">edited | {post.updated_at.toDateString()}</p>
       )}
-      {/* supposed to show edit and edit time/date if edited??? */}
-      <p>{post.post_type}</p>
-      <h1>{post.title}</h1>
-      {owner && <Link href={`/post/${post_id}/edit`}>edit</Link>}
-      {/* TODO implement post edit */}
-      <p>{post.content}</p>
-      {post.quantity && <p>Quantity: {post.quantity}</p>}
-      {post.frequency && <p>Frequency: {post.frequency}</p>}
-      {post.date && <p>Date: {post.date}</p>}
-      {post.available && <p>Available</p>}
-      {!post.closed && <p>Closed</p>}
-      <p>Owner: {post.username}</p>
-      {/* include address, if set to visisble */}
+      <p className="text-gray-500">{post.post_type}</p>
+      <h1 className="text-3xl font-bold my-4">{post.title}</h1>
+     
+      <p className="my-4">{post.content}</p>
+      <p className="my-4">Owner: {post.username}</p>
+      {owner && <Link href={`/post/${post_id}/edit`} className="text-blue-500">edit</Link>}
+      {post.quantity && <p className="my-2">Quantity: {post.quantity}</p>}
+      {post.frequency && <p className="my-2">Frequency: {post.frequency}</p>}
+      {post.date && <p className="my-2">Date: {post.date}</p>}
+      {post.available && <p className="my-2 text-green-500">Available</p>}
+      {!post.closed && <p className="my-2 text-red-500">Closed</p>}
+  
       {post.show_address && (
-        <div>
-          <p>
+        <div className="my-4">
+          <p className="text-gray-500">
             Address: {post.address_number} {post.address_street},{" "}
             {post.address_city}, {post.address_postcode}
           </p>
         </div>
       )}
-      {owner && <Link href={`/post/${post_id}/delete`}>delete</Link>}
-
-      {/* TODO implement simple post delete */}
+      {owner && <Link href={`/post/${post_id}/delete`} className="text-red-500">Delete</Link>}
     </div>
   );
-}
+      } 
