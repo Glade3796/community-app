@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { AddPostBtn, EditPostBtn } from "@/components/Buttons";
-import { editPost } from "@/_lib/actions";
+import { EditPostBtn } from "@/components/Buttons";
+import { editPost } from "@/_lib/post_actions";
 import { SelectPostType } from "@/components/DropDownInputs";
 import PostTitle from "@/components/PostTitle";
 

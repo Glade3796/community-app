@@ -1,5 +1,5 @@
+import { createAccountSubmit, editAccountSubmit } from "@/_lib/account_actions";
 import { CreateProfBtn, SubmitBtn, UpdateProfBtn } from "./Buttons";
-import { createAccountSubmit, editAccountSubmit } from "@/_lib/actions";
 
 export default function AccountForm({ clerk_auth_id, edit, userData }) {
   //   const [form, setForm] = useState({ userData });
@@ -18,20 +18,20 @@ export default function AccountForm({ clerk_auth_id, edit, userData }) {
         name="username"
         defaultValue={userData?.username || ""}
       ></input>
-      <label htmlFor="fullname">Fullname:</label>
+      <label htmlFor="full_name">Fullname:</label>
       <input
         type="text"
         placeholder="fullname"
-        name="fullname"
+        name="full_name"
         defaultValue={userData?.full_name || ""}
       ></input>
-      <label htmlFor="organisation">
+      <label htmlFor="organisation_name">
         Are you part of a community organisation, if so which?:
       </label>
       <input
         type="text"
         placeholder="organisation"
-        name="organisation"
+        name="organisation_name"
         defaultValue={userData?.organisation || ""}
       ></input>
       <label htmlFor="biography">Biography:</label>

@@ -1,20 +1,13 @@
 import { db } from "@/_lib/db";
-import { auth } from "@clerk/nextjs";
+import { fetchUserdata, fetchUsersPostData } from "@/_lib/fetch";
+
 import Link from "next/link";
 
 export default async function ProfilePage() {
-  const clerk_auth_id = auth().userId;
-  const userData = await db.query(
-    `SELECT * FROM users WHERE clerk_auth_id = $1`,
-    [clerk_auth_id]
-  );
-  const user = userData.rows[0];
+  const user = await fetchUserdata();
   const user_id = user.id;
-  const postsData = await db.query(`SELECT * FROM posts WHERE user_id = $1`, [
-    user_id,
-  ]);
-  const posts = postsData.rows;
-
+  const posts = await fetchUsersPostData(user_id);
+  console.log("posts", posts);
   return (
     <>
       <div>

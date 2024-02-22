@@ -6,6 +6,7 @@ import SiteNav from "../components/SiteNav";
 import Image from "next/image";
 import logo from "@/../public/images/Logo.png";
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -16,22 +17,24 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body className={inter.className}>
-          <header>
-            <SiteNav />
-            <Image
-              src={logo}
-              alt="Helping hands logo"
-              width="150"
-              height="150"
-              className="Logo"
-            />
-            <UserButton />
-          </header>
-          {children}
-        </body>
-      </html>
+  
+        <html lang="en">
+          <body className={inter.className}>
+            <header>
+              <SiteNav />
+              <Image
+                src={logo}
+                alt="Helping hands logo"
+                width="150"
+                height="150"
+                className="Logo"
+              />
+              <UserButton />
+            </header>
+            {children}
+          </body>
+        </html>
+      
     </ClerkProvider>
   );
 }

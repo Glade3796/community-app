@@ -25,7 +25,7 @@ export default async function SinglePostPage({ params }) {
   } else {
     owner = false;
   }
-  // console.log(owner);
+  console.log("post id", post_id);
   return (
     <div>
       <p>{post.created_at.toDateString()}</p>
@@ -35,7 +35,7 @@ export default async function SinglePostPage({ params }) {
       {/* supposed to show edit and edit time/date if edited??? */}
       <p>{post.post_type}</p>
       <h1>{post.title}</h1>
-      {owner && <Link href={`/post/${post_id}}/edit`}>edit</Link>}
+      {owner && <Link href={`/post/${post_id}/edit`}>edit</Link>}
       {/* TODO implement post edit */}
       <p>{post.content}</p>
       {post.quantity && <p>Quantity: {post.quantity}</p>}

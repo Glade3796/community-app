@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { SelectPostType } from "../../../../components/DropDownInputs";
 import PostTitle from "../../../../components/PostTitle";
 import { AddPostBtn } from "@/components/Buttons";
-import { createPost } from "@/_lib/actions";
+import { createPost } from "@/_lib/post_actions";
 
 export default function AddPostForm({ user_id }) {
   const [disableBtn, setDisableBtn] = useState(false); //set to false for development
