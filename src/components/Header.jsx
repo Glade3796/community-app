@@ -5,14 +5,14 @@ import ht from "@/../public/images/ht.png";
 
 export default function PageHeader() {
   return (
-    <header className="flex justify-between items-center px-4 py-2">
+    <header className="flex justify-between items-center px-4">
       <div className="flex items-center gap-4">
         {" "}
         <Image
           src={ht}
           alt="Helping hands logo"
-          width="80"
-          height="80"
+          width="70"
+          height="70"
           className="Logo"
         />
         <Link href="/">
@@ -22,7 +22,7 @@ export default function PageHeader() {
       </div>
 
       <div className="flex items-center gap-4">
-        <Link href="/dashboard" className="text-blue-500 hover:underline">
+        <Link href="/dashboard" className="text-lime-900 hover:underline">
           Dashboard
         </Link>
         <Link href="/account/profile">

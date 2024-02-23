@@ -6,13 +6,13 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="rounded-3xl bg-[url(/hero.jpg)] md:bg-none overflow-hidden bg-center bg-cover h-full">
+    <div>
       <div>
         <Image
           src={hero}
           fill
           alt="hero"
-          className="w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover object-center"
         />
       </div>
       <div>
@@ -24,8 +24,8 @@ export default function Home() {
             </p>
           </AnimateIn>
           <Link
-            href="/post/add"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 mt-4 inline-block mx-auto my-4"
+            href="/dashboard"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 mt-4 inline-block mx-auto my-4 border border-green-500"
           >
             Get Started
           </Link>

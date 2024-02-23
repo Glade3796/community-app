@@ -10,7 +10,7 @@ export default async function ProfilePage() {
 
   return (
     <>
-      <div className="w-fit flex gap-8 pt-8">
+      <div className="w-fit flex gap-8 pt-8 mr-10">
         <div>
           <div>
             <strong>
@@ -37,12 +37,12 @@ export default async function ProfilePage() {
             Edit profile
           </Link>
         </div>
-        </div>
       </div>
+    </div>
 
       <div>
         <strong>
-          <h1 className="text-xl">{user.username}&apos;s Posts</h1>
+          <h1 className="text-xl pt-5">{user.username}&apos;s Posts</h1>
         </strong>
         <ul className="max-w-screen-lg mx-auto mb-4">
           {posts.map((post) => (

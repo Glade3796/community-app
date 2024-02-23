@@ -16,13 +16,12 @@ export default async function DashboardPage({}) {
 
 
   return (
-    <div>
+    <main className="bg-white">
       <SortByNav />
       <div style={{ display: "flex", flexDirection: "column" }}>
         <Link
           href="/post/add"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 mt-4"
-          style={{ alignSelf: "flex-end" }}
+          className="bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-2 px-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 mt-4 border border-green-500 m-5"
         >
           Share a post
         </Link>
@@ -34,6 +33,6 @@ export default async function DashboardPage({}) {
           starred_posts={starredPosts}
         />
       </div>
-    </div>
+    </main>
   );
 }

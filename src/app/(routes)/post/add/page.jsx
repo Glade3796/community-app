@@ -1,15 +1,25 @@
-import { fetchUserdata } from "@/_lib/fetch";
-import AddPostForm from "@/app/(routes)/post/add/AddPostForm";
-import Image from "next/image";
 import hero from "@/../public/images/hero.jpg";
-
+import Image from "next/image";
+import AddPostForm from "@/app/(routes)/post/add/AddPostForm";
+import { fetchUserdata } from "@/_lib/fetch";
 
 export default async function AddPostPage() {
-  //get user id from clerk and use that to get user id from db
   const user = await fetchUserdata();
   return (
- <main className="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%">
-      <AddPostForm user_id={user.id} />
-  </main>
+    <div>
+      <div>
+        <Image
+          src={hero}
+          fill
+          alt="hero"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+      </div>
+      <div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
+         <AddPostForm user_id={user.id} />
+        </div>
+      </div>
+    </div>
   );
 }
