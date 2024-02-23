@@ -1,4 +1,4 @@
-//force user to make profile layer
+//force user to make a profile
 
 import { fetchUserdata } from "@/_lib/fetch";
 
