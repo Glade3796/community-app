@@ -7,7 +7,7 @@ export function SelectPostType({ handleInput, postType }) {
     "service",
     "request",
     "event",
-    // "job",
+   
     "news",
     "other",
   ]; //line 25 of schema.sql

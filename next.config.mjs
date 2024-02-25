@@ -1,4 +1,14 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
+export default (phase, { defaultConfig }) => {
+	/**
+	 * @type {import('next').NextConfig}
+	 */
+	const nextConfig = {
+		logging: {
+			fetches: {
+				fullUrl: true,
+			},
+		},
+	};
 
-export default nextConfig;
+	return nextConfig;
+};

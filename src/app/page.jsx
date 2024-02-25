@@ -1,4 +1,5 @@
 import { SignIn, UserButton } from "@clerk/nextjs";
+import { SignIn, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import AnimateIn from "@/components/AnimateIn";
 import hero from "@/../public/images/hero.jpg";

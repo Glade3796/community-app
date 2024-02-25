@@ -5,7 +5,7 @@ import { revalidatePath } from "next/cache";
 export async function StarPostServerAction(formData) {
   const data = Object.fromEntries(formData.entries());
   const { postId, userId } = data;
-  console.log(data);
+
   if (!postId || !userId) {
     throw new Error("Both postId and userId are required.");
   }

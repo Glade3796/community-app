@@ -1,55 +1,54 @@
 "use client";
+
+import useQueryString from "@/app/hooks/useQueryString";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
-import { useCallback } from "react";
 
 export default function SortByNav() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+	const { searchParams, removeQueryString, setQueryString } = useQueryString();
 
-  const createQueryString = useCallback(
-    (name, value) => {
-      const params = new URLSearchParams(searchParams);
-      params.set(name, value);
+	function selectedClass(sort) {
+		if (searchParams.get("sort") === sort?.toString()) {
+			return "font-bold text-blue-500";
+		}
+	}
+	const isSort = searchParams.has("sort");
+	return (
+		<div>
+			<h2>Sort By</h2>
+			<nav className='flex gap-4'>
+				<Link
+					href={removeQueryString("sort")}
+					className={!isSort && "font-bold text-blue-500"}
+				>
+					Default
+				</Link>
+				<Link href={setQueryString("sort", "popularity")}>Popularity</Link>
 
-      return params.toString();
-    },
-    [searchParams]
-  );
-
-  return (
-    <div className="p-3 text-center">
-      <h2 className="text-xs">Sort By</h2>
-      <nav className="flex gap-8 text-center">
-        <p><Link
-          href={
-            // sort by popularity
-            pathname + "?" + createQueryString("sort", "pop")
-          } className="underline"
-        >
-          Popularity
-        </Link></p>
-        <p><Link
-          href={
-            // sort by date created (newest first)
-            pathname + "?" + createQueryString("sort", "new")
-          } className="underline"
-        >
-          Newest
-        </Link></p>
-        <p><Link
-          href={
-            // sort by date created (oldest first)
-            pathname + "?" + createQueryString("sort", "old")
-          } className="underline"
-        >
-          Oldest
-        </Link></p>
-      </nav>
-    </div>
-  );
+				<Link
+					href={setQueryString("sort", "comments")}
+					className={selectedClass("comments")}
+				>
+					Comments
+				</Link>
+				<Link
+					href={setQueryString("sort", "quiet")}
+					className={selectedClass("quiet")}
+				>
+					Quietest
+				</Link>
+				<Link
+					href={setQueryString("sort", "new")}
+					className={selectedClass("new")}
+				>
+					Newest
+				</Link>
+				<Link
+					href={setQueryString("sort", "old")}
+					className={selectedClass("old")}
+				>
+					Oldest
+				</Link>
+			</nav>
+		</div>
+	);
 }
-
-
